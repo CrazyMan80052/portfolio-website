@@ -1,22 +1,22 @@
 {
-    "pageHeader": "Sahas Uppalapati - Computer Science Engineer building scalable and modern software.",
+    "pageHeader": "Sahas Uppalapati - Software Engineer building scalable and modern software.",
     "pageDescription": "I specialize in full-stack development, backend APIs, cloud-native systems, and practical AI/ML applications with measurable impact.",
     "aboutTopics": [
         {
             "title": "Background",
-            "body": "I am a CS builder focused on shipping reliable software at scale. My work spans full-stack product features, backend systems, and production data tooling."
+            "body": "I am a 2nd Year Computer Science student at Ohio State University, focused on shipping reliable software at scale. I've built full-stack products, production data tooling, and managed distrubuted systems in cloud environments. I have experience with the full software development lifecycle and am passionate about solving impactful user focused problems." 
         },
         {
             "title": "Interests",
-            "body": "I enjoy distributed systems, machine learning workflows, developer experience improvements, and solving problems where performance and product quality both matter."
+            "body": "I'm interested in machine learning and its practical applications, especially in the areas of natural language processing and computer vision. I also enjoy working on cloud infrastructure and distributed systems, as well as building user-friendly web applications. I'm always eager to learn new technologies and explore how they can be used to solve real-world problems."
         },
         {
             "title": "Goals",
-            "body": "I want to build systems that are fast, maintainable, and genuinely useful. Long term, I aim to lead projects that combine product intuition with strong engineering."
+            "body": "I want to build fast, reliable, and impactful software that helps solve the worlds most interesting problems. Long term, I am interested in founding my own company that leverages software to aid in solving humanities biggest challenges like climate change, energy and food production."
         },
         {
             "title": "Working Style",
-            "body": "I like to move quickly with clean abstractions, measurable outcomes, and strong team communication. I value iteration, feedback loops, and pragmatic execution."
+            "body": "I love working in team enviroments that push me to learn new skills to accomplish the task at hand. I enjoy learning from others and working together to solve ambigous problems and producing high quality work. I am a strong believer in the value of good communication and documentation to ensure that everyone is on the same page and that knowledge is shared across the team."
         }
     ]
 }

@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Amazon Internal Tooling",
+        "summary": "Built full-stack internal systems for recommendation model testing and production-log analytics at scale.",
+        "highlights": [
+            "Built Java APIs with Lambda + API Gateway for event-driven systems handling 8k+ TPS.",
+            "Reduced Athena query cost by 90% with partitioning, caching, and SQL tuning.",
+            "Cut analysis runtime from up to 15 minutes to under 3 minutes."
+        ],
+        "tech": [
+            "Java",
+            "AWS",
+            "React"
+        ]
+    },
+    {
+        "title": "Nokia Deployment Automation",
+        "summary": "Automated deployment, validation, and observability workflows for production-facing data integration systems.",
+        "highlights": [
+            "Built ML anomaly detection models with Python, GCP, BigQuery, and Vertex AI.",
+            "Implemented Bash automation and CI/CD pipelines with Jenkins and GitLab.",
+            "Set up monitoring stack with Prometheus, Datadog, Fluent Bit, and Grafana."
+        ],
+        "tech": [
+            "Jenkins",
+            "Kubernetes",
+            "Docker"
+        ]
+    }
+]
