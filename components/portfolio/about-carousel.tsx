@@ -74,7 +74,7 @@ export function AboutCarousel({ topics }: AboutCarouselProps) {
                 goNext();
               }
             }}
-            className="cursor-pointer border-blue-500/30 bg-gradient-to-br from-slate-900 to-slate-850 transition hover:border-blue-300/60 hover:shadow-[0_20px_45px_rgba(59,130,246,.2)]"
+            className="cursor-pointer border-blue-500/30 bg-linear-to-br from-slate-900 to-slate-850 transition hover:border-blue-300/60 hover:shadow-[0_20px_45px_rgba(59,130,246,.2)]"
           >
             <CardHeader>
               <CardTitle className="text-blue-100">{active.title}</CardTitle>

@@ -16,6 +16,7 @@ import { FaAws } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
 
+// May have to update this if we have different skills
 const iconMap: Record<string, IconType> = {
   "Next.js": SiNextdotjs,
   TypeScript: SiTypescript,

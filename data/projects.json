@@ -1,0 +1,117 @@
+[
+    {
+        "title": "Amazon Internal Tooling",
+        "summary": "Built full-stack internal systems for recommendation model testing and production-log analytics at scale.",
+        "highlights": [
+            "Built Java APIs with Lambda + API Gateway for event-driven systems handling 8k+ TPS.",
+            "Reduced Athena query cost by 90% with partitioning, caching, and SQL tuning.",
+            "Cut analysis runtime from up to 15 minutes to under 3 minutes."
+        ],
+        "tech": [
+            "Java",
+            "AWS",
+            "React"
+        ]
+    },
+    {
+        "title": "Nokia Deployment Automation",
+        "summary": "Automated deployment, validation, and observability workflows for production-facing data integration systems.",
+        "highlights": [
+            "Reduced manual testing by 70% with Bash-driven deployment automation.",
+            "Implemented CI/CD with Jenkins and GitHub pipelines.",
+            "Set up monitoring stack with Prometheus, Datadog, and Fluent Bit."
+        ],
+        "tech": [
+            "Jenkins",
+            "Kubernetes",
+            "Docker"
+        ]
+    },
+    {
+        "title": "Boss MechAInic Chatbot Tool",
+        "summary": "Agentic vehicle-diagnosis chatbot platform connecting customers and auto shops.",
+        "highlights": [
+            "Built with Next.js + TypeScript and deployed on Vercel.",
+            "Integrated Redis, Auth.js, and PostgreSQL for state and persistence.",
+            "Enabled shops to review conversations for faster follow-up support."
+        ],
+        "repo": "https://github.com/CrazyMan80052/boss-chatbot-tool/tree/main",
+        "tech": [
+            "Next.js",
+            "TypeScript",
+            "Redis",
+            "PostgreSQL"
+        ]
+    },
+    {
+        "title": "Finance Data Pipeline",
+        "summary": "Serverless ETL pipeline for stock market ingestion, transformation, and analytics.",
+        "highlights": [
+            "Used Python Lambda jobs to fetch Alpha Vantage market data.",
+            "Transformed data with PySpark and stored partitioned Parquet on S3.",
+            "Scheduled fully automated runs every 12 hours using CloudWatch."
+        ],
+        "repo": "https://github.com/CrazyMan80052/finance-data-pipeline",
+        "tech": [
+            "Python",
+            "AWS"
+        ]
+    },
+    {
+        "title": "Automated Video Creation Tool",
+        "summary": "Automated Reddit-style short-form video generation and publishing pipeline.",
+        "highlights": [
+            "Rendered and uploaded videos in under 4 minutes end-to-end.",
+            "Automated thumbnails, tags, subtitles, and descriptions with NLP + LLM workflows.",
+            "Containerized with Docker for reliable cross-platform execution."
+        ],
+        "repo": "https://github.com/CrazyMan80052/Reddit-Video-Uploader",
+        "tech": [
+            "Python",
+            "Docker"
+        ]
+    },
+    {
+        "title": "Stock Price Movement Classifier",
+        "summary": "ML pipeline predicting next-day stock movement from large historical datasets.",
+        "highlights": [
+            "Trained XGBoost and Random Forest models on 2M rows.",
+            "Engineered 15+ technical indicators for feature quality.",
+            "Improved precision by 10% with preprocessing and feature tuning."
+        ],
+        "repo": "https://github.com/CrazyMan80052/Quantathon2025",
+        "tech": [
+            "Python",
+            "PyTorch"
+        ]
+    },
+    {
+        "title": "Hack AI Infrared Analysis",
+        "summary": "Computer vision search-and-rescue assistant using infrared drone imagery.",
+        "highlights": [
+            "Trained YOLOv8 + PyTorch detection model with 80% accuracy.",
+            "Prepared and cleaned a 7,800-image infrared dataset.",
+            "Designed Q-learning inspired swarm pathfinding for 20% better coverage."
+        ],
+        "repo": "https://github.com/CrazyMan80052/HackAIInfraredAnalysis",
+        "tech": [
+            "Python",
+            "PyTorch"
+        ]
+    },
+    {
+        "title": "Club Discovery System",
+        "summary": "Redesigned a university club discovery platform with modern filtering and recommendations.",
+        "highlights": [
+            "Implemented React/Next.js discovery features and recommendation flows.",
+            "Led 8-person team with Agile delivery and Git-based collaboration.",
+            "Contributed to deployment candidate for a 60,000+ student environment."
+        ],
+        "repo": "https://github.com/Collaborative-Software-Development-Club/fall-2025-web-clubhub",
+        "tech": [
+            "Next.js",
+            "React",
+            "TypeScript"
+        ]
+    }
+]

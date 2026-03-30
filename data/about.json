@@ -1,0 +1,22 @@
+{
+    "pageHeader": "Sahas Uppalapati - Computer Science Engineer building scalable and modern software.",
+    "pageDescription": "I specialize in full-stack development, backend APIs, cloud-native systems, and practical AI/ML applications with measurable impact.",
+    "aboutTopics": [
+        {
+            "title": "Background",
+            "body": "I am a CS builder focused on shipping reliable software at scale. My work spans full-stack product features, backend systems, and production data tooling."
+        },
+        {
+            "title": "Interests",
+            "body": "I enjoy distributed systems, machine learning workflows, developer experience improvements, and solving problems where performance and product quality both matter."
+        },
+        {
+            "title": "Goals",
+            "body": "I want to build systems that are fast, maintainable, and genuinely useful. Long term, I aim to lead projects that combine product intuition with strong engineering."
+        },
+        {
+            "title": "Working Style",
+            "body": "I like to move quickly with clean abstractions, measurable outcomes, and strong team communication. I value iteration, feedback loops, and pragmatic execution."
+        }
+    ]
+}

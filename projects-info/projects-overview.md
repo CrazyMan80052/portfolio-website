@@ -84,7 +84,7 @@ Implemented a thread-safe bounded buffer in C to solve the producer-consumer pro
 - Developed a testing framework that simulated 1,000+ operations to verify correctness under load.
 - Improved throughput by 3x over a naive unsynchronized implementation by reducing lock contention and tuning critical sections.
 
-Repository: [Bounded Buffer Problem](#)
+Repository: [Bounded Buffer Problem](https://github.com/CrazyMan80052/bounded-buffer)
 
 ## CLI Restaurant Inventory System
 Created a terminal-based restaurant inventory and ordering system in C with persistent file storage. The project focused on systems programming fundamentals, efficient order handling, and debugging reliability issues.
@@ -94,7 +94,7 @@ Created a terminal-based restaurant inventory and ordering system in C with pers
 - Used GDB and Valgrind to find and fix segmentation faults and memory leaks.
 - Designed the system to process multiple orders efficiently while maintaining consistent inventory tracking.
 
-Repository: [CLI Restaurant Inventory System](#)
+Repository: [CLI Restaurant Inventory System](https://github.com/CrazyMan80052/cli-restaurant-inventory-system)
 
 ## Club Discovery System
 Helped lead the redesign of Ohio State's club discovery platform to provide better filtering, recommendations, attendance support, and a more modern user experience. The project combined frontend development, product design, and team leadership in a collaborative student setting.
