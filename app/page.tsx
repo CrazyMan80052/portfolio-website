@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import aboutData from "@/data/about.json";
 import projectsData from "@/data/projects.json";
 import skillsData from "@/data/skills.json";
+import workExperienceData from "@/data/work-experience.json";
+import { Experience, ExperienceCard } from "@/components/portfolio/experience-card";
 
 type AboutTopic = {
     title: string;
@@ -26,6 +28,7 @@ type AboutData = {
     aboutTopics: AboutTopic[];
 };
 
+const workExperience = workExperienceData as Experience[];
 const projects = projectsData as Project[];
 const about = aboutData as AboutData;
 const coreTech = skillsData as string[];
@@ -65,6 +68,21 @@ export default function Home() {
                     </section>
 
                     <SectionShell
+                        id="experience"
+                        title="Experience"
+                        subtitle="Internships"
+                    >
+                        <div className="grid gap-5 md:grid-cols-2">
+                            {workExperience.map((experience) => (
+                                <ExperienceCard
+                                    key={`${experience.company}-${experience.positionTitle}`}
+                                    experience={experience}
+                                />
+                            ))}
+                        </div>
+                    </SectionShell>
+
+                    <SectionShell
                         id="projects"
                         title="Projects"
                         subtitle="Real systems, productized experiments, and high-impact engineering."
@@ -99,9 +117,6 @@ export default function Home() {
                                 </Button>
                             </a>
                         </div>
-                        <p className="mt-3 text-sm text-slate-400">
-                            Add your file at <code className="rounded bg-slate-800 px-1 py-0.5">public/resume.pdf</code>.
-                        </p>
                     </SectionShell>
 
                     <SectionShell id="contact" title="Contact" subtitle="Minimal friction, easy reach-out.">
