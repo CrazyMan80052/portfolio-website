@@ -1,7 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import posthog from "posthog-js";
 
 const bootSteps = [
   "Initializing portfolio kernel...",
@@ -20,6 +21,11 @@ export function TerminalIntro({ onFinish }: TerminalIntroProps) {
   const [lineCount, setLineCount] = useState(1);
   const [typed, setTyped] = useState("");
   const [unlocked, setUnlocked] = useState(false);
+
+  const handleFinish = useCallback((method: "click" | "keyboard") => {
+    posthog.capture("portfolio_intro_dismissed", { method, command_ready: unlocked });
+    onFinish();
+  }, [unlocked, onFinish]);
 
   const visibleLines = useMemo(() => bootSteps.slice(0, lineCount), [lineCount]);
 
@@ -59,13 +65,13 @@ export function TerminalIntro({ onFinish }: TerminalIntroProps) {
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
-        onFinish();
+        handleFinish("keyboard");
       }
     };
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [onFinish]);
+  }, [handleFinish]);
 
   return (
     <AnimatePresence>
@@ -74,7 +80,7 @@ export function TerminalIntro({ onFinish }: TerminalIntroProps) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.35 }}
-        onClick={onFinish}
+        onClick={() => handleFinish("click")}
         className="fixed inset-0 z-50 grid place-items-center bg-slate-950/95 px-4"
       >
         <motion.div

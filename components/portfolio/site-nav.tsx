@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import posthog from "posthog-js";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -27,6 +28,7 @@ export function SiteNav() {
                 whileHover={{ y: -2, scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 href={link.href}
+                onClick={() => posthog.capture("nav_link_clicked", { label: link.label, href: link.href })}
                 className="rounded-md px-2 py-1 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white sm:px-3 sm:text-sm"
               >
                 {link.label}

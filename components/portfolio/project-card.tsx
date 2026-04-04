@@ -2,6 +2,7 @@
 
 import { ExternalLink, FolderGit2 } from "lucide-react";
 import { motion } from "framer-motion";
+import posthog from "posthog-js";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -51,6 +52,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => posthog.capture("project_repo_clicked", { project_title: project.title, repo_url: project.repo })}
               className="inline-flex items-center gap-2 text-sm font-medium text-blue-300 transition hover:text-blue-200"
             >
               <FolderGit2 className="h-4 w-4" />
@@ -77,6 +79,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             href={project.repo}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => posthog.capture("project_repo_clicked", { project_title: project.title, repo_url: project.repo })}
             className="mt-4 inline-flex items-center gap-2 rounded-md border border-blue-300/60 bg-blue-400/15 px-3 py-2 text-sm text-blue-100 transition hover:bg-blue-400/25"
           >
             <FolderGit2 className="h-4 w-4" />

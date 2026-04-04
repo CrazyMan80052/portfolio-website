@@ -1,8 +1,9 @@
 "use client";
 
-import { Download, ExternalLink, Mail } from "lucide-react";
+import { Check, Download, ExternalLink, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import posthog from "posthog-js";
 
 import { AboutCarousel } from "@/components/portfolio/about-carousel";
 import { ProjectCard, type Project } from "@/components/portfolio/project-card";
@@ -32,9 +33,40 @@ const workExperience = workExperienceData as Experience[];
 const projects = projectsData as Project[];
 const about = aboutData as AboutData;
 const coreTech = skillsData as string[];
+const obfuscatedEmailCharCodes = [115, 97, 104, 97, 115, 117, 48, 54, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109];
 
 export default function Home() {
     const [introDone, setIntroDone] = useState(false);
+    const [emailCopied, setEmailCopied] = useState(false);
+
+    const handleCopyEmail = async () => {
+        const email = String.fromCharCode(...obfuscatedEmailCharCodes);
+        posthog.capture("contact_link_clicked", { platform: "email", action: "copy" });
+
+        try {
+            await navigator.clipboard.writeText(email);
+            setEmailCopied(true);
+            window.setTimeout(() => setEmailCopied(false), 2200);
+            return;
+        } catch {
+            const fallbackInput = document.createElement("textarea");
+            fallbackInput.value = email;
+            fallbackInput.setAttribute("readonly", "");
+            fallbackInput.style.position = "absolute";
+            fallbackInput.style.left = "-9999px";
+            document.body.appendChild(fallbackInput);
+            fallbackInput.select();
+
+            const copied = document.execCommand("copy");
+            document.body.removeChild(fallbackInput);
+
+            if (copied) {
+                setEmailCopied(true);
+                window.setTimeout(() => setEmailCopied(false), 2200);
+                return;
+            }
+        }
+    };
 
     return (
         <>
@@ -104,13 +136,13 @@ export default function Home() {
 
                     <SectionShell id="resume" title="Resume" subtitle="View or download my latest resume.">
                         <div className="flex flex-wrap gap-3">
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture("resume_viewed")}>
                                 <Button className="hover:-translate-y-0.5">
                                     <ExternalLink className="h-4 w-4" />
                                     View Resume
                                 </Button>
                             </a>
-                            <a href="/resume.pdf" download>
+                            <a href="/resume.pdf" download onClick={() => posthog.capture("resume_downloaded")}>
                                 <Button variant="outline" className="hover:-translate-y-0.5">
                                     <Download className="h-4 w-4" />
                                     Download Resume
@@ -120,31 +152,39 @@ export default function Home() {
                     </SectionShell>
 
                     <SectionShell id="contact" title="Contact" subtitle="Minimal friction, easy reach-out.">
-                        <div className="flex flex-wrap gap-3">
-                            <a href="mailto:sahasu06@gmail.com">
-                                <Button variant="secondary" className="hover:-translate-y-0.5">
-                                    <Mail className="h-4 w-4" />
-                                    Email me
+                        <div className="space-y-2">
+                            <div className="flex flex-wrap gap-3">
+                                <Button variant="secondary" className="hover:-translate-y-0.5" onClick={handleCopyEmail} type="button">
+                                    {emailCopied ? <Check className="h-4 w-4" /> : <Mail className="h-4 w-4" />}
+                                    {emailCopied ? "Email copied" : "Copy email"}
                                 </Button>
-                            </a>
-                            <a
-                                href="https://github.com/CrazyMan80052"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Button variant="outline" className="hover:-translate-y-0.5">
-                                    GitHub
-                                </Button>
-                            </a>
-                            <a
-                                href="https://www.linkedin.com/in/sahas-uppalapati/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Button variant="outline" className="hover:-translate-y-0.5">
-                                    LinkedIn
-                                </Button>
-                            </a>
+                                <span className="sr-only" aria-live="polite">
+                                    {emailCopied ? "Email address copied to clipboard." : ""}
+                                </span>
+                                <a
+                                    href="https://github.com/CrazyMan80052"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => posthog.capture("contact_link_clicked", { platform: "github" })}
+                                >
+                                    <Button variant="outline" className="hover:-translate-y-0.5">
+                                        GitHub
+                                    </Button>
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/in/sahas-uppalapati/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => posthog.capture("contact_link_clicked", { platform: "linkedin" })}
+                                >
+                                    <Button variant="outline" className="hover:-translate-y-0.5">
+                                        LinkedIn
+                                    </Button>
+                                </a>
+                            </div>
+                            <p className="min-h-6 text-sm text-blue-200/90" aria-hidden={!emailCopied}>
+                                {emailCopied ? "Copied to clipboard" : ""}
+                            </p>
                         </div>
                     </SectionShell>
                 </main>

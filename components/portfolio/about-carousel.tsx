@@ -3,6 +3,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import posthog from "posthog-js";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -19,8 +20,16 @@ export function AboutCarousel({ topics }: AboutCarouselProps) {
   const [index, setIndex] = useState(0);
   const active = topics[index];
 
-  const goNext = () => setIndex((prev) => (prev + 1) % topics.length);
-  const goPrev = () => setIndex((prev) => (prev - 1 + topics.length) % topics.length);
+  const goNext = () => {
+    const nextIndex = (index + 1) % topics.length;
+    posthog.capture("about_carousel_navigated", { direction: "next", topic: topics[nextIndex].title });
+    setIndex(nextIndex);
+  };
+  const goPrev = () => {
+    const prevIndex = (index - 1 + topics.length) % topics.length;
+    posthog.capture("about_carousel_navigated", { direction: "prev", topic: topics[prevIndex].title });
+    setIndex(prevIndex);
+  };
 
   return (
     <div className="space-y-4">
@@ -38,7 +47,7 @@ export function AboutCarousel({ topics }: AboutCarouselProps) {
             <button
               key={topic.title}
               type="button"
-              onClick={() => setIndex(topicIndex)}
+              onClick={() => { posthog.capture("about_carousel_navigated", { direction: "dot", topic: topic.title }); setIndex(topicIndex); }}
               aria-label={`View ${topic.title}`}
               className={`h-2.5 w-2.5 rounded-full transition ${
                 topicIndex === index ? "bg-blue-300" : "bg-slate-600 hover:bg-slate-400"
