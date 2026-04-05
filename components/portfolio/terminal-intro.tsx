@@ -14,13 +14,15 @@ const bootSteps = [
 ];
 
 type TerminalIntroProps = {
+  name: string;
   onFinish: () => void;
 };
 
-export function TerminalIntro({ onFinish }: TerminalIntroProps) {
+export function TerminalIntro({ name, onFinish }: TerminalIntroProps) {
   const [lineCount, setLineCount] = useState(1);
   const [typed, setTyped] = useState("");
   const [unlocked, setUnlocked] = useState(false);
+  const terminalUser = useMemo(() => name.trim().toLowerCase().replace(/\s+/g, "-"), [name]);
 
   const handleFinish = useCallback((method: "click" | "keyboard") => {
     posthog.capture("portfolio_intro_dismissed", { method, command_ready: unlocked });
@@ -48,7 +50,7 @@ export function TerminalIntro({ onFinish }: TerminalIntroProps) {
       return;
     }
 
-    const text = "curl sahas";
+    const text = `curl ${terminalUser}`;
     let index = 0;
     const typing = window.setInterval(() => {
       index += 1;
@@ -60,7 +62,7 @@ export function TerminalIntro({ onFinish }: TerminalIntroProps) {
     }, 120);
 
     return () => window.clearInterval(typing);
-  }, [lineCount]);
+  }, [lineCount, terminalUser]);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -90,7 +92,7 @@ export function TerminalIntro({ onFinish }: TerminalIntroProps) {
           className="w-full max-w-3xl rounded-xl border border-blue-400/25 bg-slate-950 p-5 shadow-[0_0_90px_rgba(37,99,235,.2)]"
         >
           <p className="mb-4 text-xs uppercase tracking-[0.2em] text-blue-300/90">
-            sahas@portfolio-terminal
+            {terminalUser}@portfolio-terminal
           </p>
           <div className="space-y-2 font-mono text-sm text-slate-200">
             {visibleLines.map((line) => (

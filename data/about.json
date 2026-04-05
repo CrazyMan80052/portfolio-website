@@ -1,10 +1,17 @@
 {
+    "name": "Sahas",
+    "showResume": true,
+    "contact": {
+        "email": "sahasu06@gmail.com",
+        "github": "https://github.com/CrazyMan80052",
+        "linkedin": "https://www.linkedin.com/in/sahas-uppalapati/"
+    },
     "pageHeader": "Sahas Uppalapati - Software Engineer building scalable and modern software.",
     "pageDescription": "I specialize in full-stack development, backend APIs, cloud-native systems, and practical AI/ML applications with measurable impact.",
     "aboutTopics": [
         {
             "title": "Background",
-            "body": "I am a 2nd Year Computer Science student at Ohio State University, focused on shipping reliable software at scale. I've built full-stack products, production data tooling, and managed distrubuted systems in cloud environments. I have experience with the full software development lifecycle and am passionate about solving impactful user focused problems." 
+            "body": "I am a 2nd Year Computer Science student at Ohio State University, focused on shipping reliable software at scale. I've built full-stack products, production data tooling, and managed distrubuted systems in cloud environments. I have experience with the full software development lifecycle and am passionate about solving impactful user focused problems."
         },
         {
             "title": "Interests",

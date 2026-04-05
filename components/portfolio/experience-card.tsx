@@ -8,17 +8,7 @@ import { SiNokia } from "react-icons/si";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { TechIcon } from "@/components/portfolio/tech-icon";
-
-// add location, dates
-export type Experience = {
-    positionTitle: string;
-    company: string;
-    summary: string;
-    highlights: string[];
-    tech: string[];
-    location: string;
-    dates: string;
-};
+import type { Experience } from "@/data/portfolio.types";
 
 // edit to work
 type ExperienceCardProps = {

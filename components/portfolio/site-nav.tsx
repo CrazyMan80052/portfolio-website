@@ -2,6 +2,10 @@
 
 import { motion } from "framer-motion";
 import posthog from "posthog-js";
+import aboutData from "@/data/about.json";
+import type { AboutData } from "@/data/portfolio.types";
+
+const about = aboutData as AboutData;
 
 const links = [
   { href: "#home", label: "Home" },
@@ -14,12 +18,12 @@ const links = [
 export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6"> 
         <a
           href="#home"
           className="text-sm font-semibold tracking-[0.2em] text-blue-300 transition hover:text-blue-200"
         >
-          SAHAS.DEV
+          {about.name.toUpperCase()}.DEV
         </a>
         <ul className="flex items-center gap-2 sm:gap-3">
           {links.map((link) => (

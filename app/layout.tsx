@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import aboutData from "@/data/about.json";
+import type { AboutData } from "@/data/portfolio.types";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,8 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const about = aboutData as AboutData;
+
 export const metadata: Metadata = {
-  title: "Sahas | Portfolio",
+  title: `${about.name} | Portfolio`,
   description:
     "Modern software engineering portfolio featuring projects in full-stack development, cloud systems, and machine learning.",
 };

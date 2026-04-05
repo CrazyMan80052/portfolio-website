@@ -6,41 +6,30 @@ import { useState } from "react";
 import posthog from "posthog-js";
 
 import { AboutCarousel } from "@/components/portfolio/about-carousel";
-import { ProjectCard, type Project } from "@/components/portfolio/project-card";
+import { ProjectCard } from "@/components/portfolio/project-card";
 import { SectionShell } from "@/components/portfolio/section-shell";
 import { SiteNav } from "@/components/portfolio/site-nav";
 import { TechIcon } from "@/components/portfolio/tech-icon";
 import { TerminalIntro } from "@/components/portfolio/terminal-intro";
 import { Button } from "@/components/ui/button";
 import aboutData from "@/data/about.json";
+import type { AboutData, Experience, Project } from "@/data/portfolio.types";
 import projectsData from "@/data/projects.json";
 import skillsData from "@/data/skills.json";
 import workExperienceData from "@/data/work-experience.json";
-import { Experience, ExperienceCard } from "@/components/portfolio/experience-card";
-
-type AboutTopic = {
-    title: string;
-    body: string;
-};
-
-type AboutData = {
-    pageHeader: string;
-    pageDescription: string;
-    aboutTopics: AboutTopic[];
-};
+import { ExperienceCard } from "@/components/portfolio/experience-card";
 
 const workExperience = workExperienceData as Experience[];
 const projects = projectsData as Project[];
 const about = aboutData as AboutData;
 const coreTech = skillsData as string[];
-const obfuscatedEmailCharCodes = [115, 97, 104, 97, 115, 117, 48, 54, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109];
 
 export default function Home() {
     const [introDone, setIntroDone] = useState(false);
     const [emailCopied, setEmailCopied] = useState(false);
 
     const handleCopyEmail = async () => {
-        const email = String.fromCharCode(...obfuscatedEmailCharCodes);
+        const email = about.contact.email;
         posthog.capture("contact_link_clicked", { platform: "email", action: "copy" });
 
         try {
@@ -70,7 +59,7 @@ export default function Home() {
 
     return (
         <>
-            {!introDone ? <TerminalIntro onFinish={() => setIntroDone(true)} /> : null}
+            {!introDone ? <TerminalIntro name={about.name} onFinish={() => setIntroDone(true)} /> : null}
 
             <div className="relative min-h-screen bg-slate-950 text-slate-100">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.16),transparent_55%)]" />
@@ -134,22 +123,24 @@ export default function Home() {
                         <AboutCarousel topics={about.aboutTopics} />
                     </SectionShell>
 
-                    <SectionShell id="resume" title="Resume" subtitle="View or download my latest resume.">
-                        <div className="flex flex-wrap gap-3">
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture("resume_viewed")}>
-                                <Button className="hover:-translate-y-0.5">
-                                    <ExternalLink className="h-4 w-4" />
-                                    View Resume
-                                </Button>
-                            </a>
-                            <a href="/resume.pdf" download onClick={() => posthog.capture("resume_downloaded")}>
-                                <Button variant="outline" className="hover:-translate-y-0.5">
-                                    <Download className="h-4 w-4" />
-                                    Download Resume
-                                </Button>
-                            </a>
-                        </div>
-                    </SectionShell>
+                    {about.showResume ? (
+                        <SectionShell id="resume" title="Resume" subtitle="View or download my latest resume.">
+                            <div className="flex flex-wrap gap-3">
+                                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture("resume_viewed")}>
+                                    <Button className="hover:-translate-y-0.5">
+                                        <ExternalLink className="h-4 w-4" />
+                                        View Resume
+                                    </Button>
+                                </a>
+                                <a href="/resume.pdf" download onClick={() => posthog.capture("resume_downloaded")}>
+                                    <Button variant="outline" className="hover:-translate-y-0.5">
+                                        <Download className="h-4 w-4" />
+                                        Download Resume
+                                    </Button>
+                                </a>
+                            </div>
+                        </SectionShell>
+                    ) : null}
 
                     <SectionShell id="contact" title="Contact" subtitle="Minimal friction, easy reach-out.">
                         <div className="space-y-2">
@@ -162,7 +153,7 @@ export default function Home() {
                                     {emailCopied ? "Email address copied to clipboard." : ""}
                                 </span>
                                 <a
-                                    href="https://github.com/CrazyMan80052"
+                                    href={about.contact.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     onClick={() => posthog.capture("contact_link_clicked", { platform: "github" })}
@@ -172,7 +163,7 @@ export default function Home() {
                                     </Button>
                                 </a>
                                 <a
-                                    href="https://www.linkedin.com/in/sahas-uppalapati/"
+                                    href={about.contact.linkedin}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     onClick={() => posthog.capture("contact_link_clicked", { platform: "linkedin" })}
