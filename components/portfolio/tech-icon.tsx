@@ -1,37 +1,68 @@
 import type { IconType } from "react-icons";
 import {
+    SiApachekafka,
+    SiApachespark,
+    SiC,
+    SiCmake,
+    SiCplusplus,
+    SiDatadog,
     SiDocker,
-    SiJenkins,
+    SiFastapi,
+    SiGnubash,
+    SiGooglecloud,
+    SiGrafana,
+    SiJavascript,
+    SiJson,
     SiKubernetes,
+    SiLangchain,
+    SiLinux,
     SiNextdotjs,
+    SiOnnx,
+    SiPandas,
     SiPostgresql,
-    SiPython,
+    SiPrometheus,
     SiPytorch,
     SiReact,
     SiRedis,
+    SiTerraform,
     SiTypescript,
-    SiPandas,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { FaAws } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
 
-// May have to update this if we have different skills
 const iconMap: Record<string, IconType> = {
-    "Next.js": SiNextdotjs,
-    TypeScript: SiTypescript,
-    React: SiReact,
-    Python: SiPython,
-    Java: FaJava,
     AWS: FaAws,
+    Bash: SiGnubash,
+    C: SiC,
+    "C++": SiCplusplus,
+    "C++20": SiCplusplus,
+    CMake: SiCmake,
+    Datadog: SiDatadog,
     Docker: SiDocker,
+    FastAPI: SiFastapi,
+    GCP: SiGooglecloud,
+    Grafana: SiGrafana,
+    Java: FaJava,
+    JavaScript: SiJavascript,
+    JSON: SiJson,
+    Kafka: SiApachekafka,
     Kubernetes: SiKubernetes,
-    Redis: SiRedis,
-    PostgreSQL: SiPostgresql,
-    PyTorch: SiPytorch,
-    Jenkins: SiJenkins,
+    LangChain: SiLangchain,
+    Linux: SiLinux,
+    "Next.js": SiNextdotjs,
+    ONNX: SiOnnx,
     Pandas: SiPandas,
+    PostgreSQL: SiPostgresql,
+    Prometheus: SiPrometheus,
+    PySpark: SiApachespark,
+    PyTorch: SiPytorch,
+    React: SiReact,
+    Redis: SiRedis,
+    Terraform: SiTerraform,
+    TypeScript: SiTypescript,
+    "Vertex AI": SiGooglecloud,
 };
 
 type TechIconProps = {
@@ -49,7 +80,7 @@ export function TechIcon({ label, className }: TechIconProps) {
                 className,
             )}
         >
-            {Icon ? <Icon aria-hidden className="h-3.5 w-3.5 text-blue-300" /> : null}
+            {Icon ? <Icon aria-hidden className="h-3.5 w-3.5 text-cyan-300" /> : null}
             <span>{label}</span>
         </span>
     );

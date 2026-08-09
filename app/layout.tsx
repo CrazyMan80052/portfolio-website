@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import aboutData from "@/data/about.json";
-import type { AboutData } from "@/data/portfolio.types";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,12 +12,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const about = aboutData as AboutData;
-
 export const metadata: Metadata = {
-  title: `${about.name} | Portfolio`,
-  description:
-    "Modern software engineering portfolio featuring projects in full-stack development, cloud systems, and machine learning.",
+    title: "Sahas Uppalapati | Software Engineer",
+    description:
+        "Software engineer graduating in December 2026 with experience building data, ML infrastructure, distributed systems, and backend services at Amazon and Nokia.",
+    openGraph: {
+        title: "Sahas Uppalapati | Software Engineer",
+        description:
+            "Software engineer graduating in December 2026 with experience building data, ML infrastructure, distributed systems, and backend services at Amazon and Nokia.",
+        url: "https://sahas-portfolio-website.vercel.app/",
+        siteName: "Sahas Uppalapati",
+        type: "website",
+    },
+    twitter: {
+        card: "summary",
+        title: "Sahas Uppalapati | Software Engineer",
+        description:
+            "Software engineer graduating in December 2026 with experience building data, ML infrastructure, distributed systems, and backend services at Amazon and Nokia.",
+    },
 };
 
 export default function RootLayout({
