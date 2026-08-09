@@ -1,29 +1,25 @@
 {
-    "name": "Sahas",
+    "name": "Sahas Uppalapati",
     "showResume": true,
     "contact": {
-        "email": "sahasu06@gmail.com",
+        "email": "uppalapatisahas@gmail.com",
         "github": "https://github.com/CrazyMan80052",
         "linkedin": "https://www.linkedin.com/in/sahas-uppalapati/"
     },
-    "pageHeader": "Sahas Uppalapati - Software Engineer building scalable and modern software.",
-    "pageDescription": "I specialize in full-stack development, backend APIs, cloud-native systems, and practical AI/ML applications with measurable impact.",
+    "headline": "Software engineer building reliable data, ML, and distributed systems.",
+    "heroCopy": "Computer Science student at Ohio State graduating in December 2026. I build production-facing evaluation systems, data pipelines, ML infrastructure, and backend services with measurable performance and reliability.",
     "aboutTopics": [
         {
             "title": "Background",
-            "body": "I am a 2nd Year Computer Science student at Ohio State University, focused on shipping reliable software at scale. I've built full-stack products, production data tooling, and managed distrubuted systems in cloud environments. I have experience with the full software development lifecycle and am passionate about solving impactful user focused problems."
+            "body": "I am a Computer Science student at Ohio State graduating in December 2026. My experience spans production-facing data systems, ML evaluation, backend services, infrastructure automation, and performance-focused systems work."
         },
         {
-            "title": "Interests",
-            "body": "I'm interested in machine learning and its practical applications, especially in the areas of natural language processing and computer vision. I also enjoy working on cloud infrastructure and distributed systems, as well as building user-friendly web applications. I'm always eager to learn new technologies and explore how they can be used to solve real-world problems."
+            "title": "How I Build",
+            "body": "I start with the user and failure modes, then make behavior measurable through tests, evaluation, observability, and reproducible benchmarks."
         },
         {
-            "title": "Goals",
-            "body": "I want to build fast, reliable, and impactful software that helps solve the worlds most interesting problems. Long term, I am interested in founding my own company that leverages software to aid in solving humanities biggest challenges like climate change, energy and food production."
-        },
-        {
-            "title": "Working Style",
-            "body": "I love working in team enviroments that push me to learn new skills to accomplish the task at hand. I enjoy learning from others and working together to solve ambigous problems and producing high quality work. I am a strong believer in the value of good communication and documentation to ensure that everyone is on the same page and that knowledge is shared across the team."
+            "title": "What I Want to Work On",
+            "body": "I am looking for full-time software engineering roles where I can own backend, data, or ML infrastructure problems end to end and ship systems that people depend on."
         }
     ]
 }

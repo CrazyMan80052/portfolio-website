@@ -1,13 +1,51 @@
 [
-    "Next.js",
-    "TypeScript",
-    "React",
-    "Java",
-    "Python",
-    "AWS",
-    "Docker",
-    "Kubernetes",
-    "Redis",
-    "PostgreSQL",
-    "PyTorch"
+    {
+        "title": "Languages",
+        "items": [
+            "Python",
+            "Java",
+            "C++",
+            "C",
+            "SQL",
+            "TypeScript",
+            "JavaScript",
+            "Bash"
+        ]
+    },
+    {
+        "title": "Data and ML",
+        "items": [
+            "PySpark",
+            "Kafka",
+            "LangChain",
+            "PyTorch",
+            "ONNX",
+            "Pandas",
+            "Vertex AI"
+        ]
+    },
+    {
+        "title": "Cloud and Infrastructure",
+        "items": [
+            "AWS",
+            "GCP",
+            "Docker",
+            "Kubernetes",
+            "Linux",
+            "Terraform",
+            "CI/CD"
+        ]
+    },
+    {
+        "title": "Storage and Observability",
+        "items": [
+            "PostgreSQL",
+            "DynamoDB",
+            "S3",
+            "Athena",
+            "Parquet",
+            "Prometheus",
+            "Datadog"
+        ]
+    }
 ]

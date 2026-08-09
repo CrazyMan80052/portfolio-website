@@ -13,17 +13,39 @@ export type AboutData = {
     name: string;
     showResume: boolean;
     contact: AboutContact;
-    pageHeader: string;
-    pageDescription: string;
+    headline: string;
+    heroCopy: string;
     aboutTopics: AboutTopic[];
 };
 
+export type ProjectCategory =
+    | "ML Infrastructure"
+    | "Distributed Systems"
+    | "Systems"
+    | "Agentic Product"
+    | "Applied ML"
+    | "C++ / Markets"
+    | "Data Engineering"
+    | "Automation"
+    | "Product / Leadership"
+    | "Machine Learning"
+    | "Performance Computing"
+    | "AI Tooling"
+    | "Systems Fundamentals"
+    | "Web Product";
+
 export type Project = {
     title: string;
+    category: ProjectCategory;
     summary: string;
+    importance?: string;
     highlights: string[];
-    repo?: string;
     tech: string[];
+    repo: string;
+    demo?: string;
+    featured: boolean;
+    image?: string;
+    imageAlt?: string;
 };
 
 export type Experience = {
@@ -34,4 +56,9 @@ export type Experience = {
     tech: string[];
     location: string;
     dates: string;
+};
+
+export type SkillGroup = {
+    title: string;
+    items: string[];
 };

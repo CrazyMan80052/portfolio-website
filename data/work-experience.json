@@ -1,15 +1,38 @@
 [
     {
-        "positionTitle": "Data and Network Automation Co-op",
-        "company": "Nokia",
-        "summary": "Automated deployment, validation, and observability workflows for production-facing data integration systems.",
+        "positionTitle": "Software Development Engineer Intern",
+        "company": "Amazon",
+        "summary": "Built automated evaluation and data systems for recommendation quality at Prime Video.",
         "highlights": [
-            "Built training and inference pipelines for machine learning anomaly detection models with Python, GCP, BigQuery, and Vertex AI.",
-            "Automated Abinitio deployments and testing with Bash and CI/CD pipelines with Jenkins and GitLab reducing manual effort by 40%.",
-            "Enabled observability across Nokia's Autonomous Networking data suite with Prometheus, Datadog, Fluent Bit, and Grafana."
+            "Reduced validation time by 84% through parallel execution and concurrency controls across 10K+ weekly customer profiles.",
+            "Engineered PySpark aggregation pipelines and data schemas processing 500M+ daily records across more than 10 TB of data.",
+            "Built a scheduled LangChain agent that evaluated recommendations and persisted reports in S3 and detected anomalies in DynamoDB."
         ],
         "tech": [
-            "Jenkins",
+            "Python",
+            "AWS",
+            "LangChain",
+            "PySpark",
+            "Step Functions",
+            "DynamoDB"
+        ],
+        "location": "Seattle, WA",
+        "dates": "June 2026 - Present"
+    },
+    {
+        "positionTitle": "Data and Machine Learning Engineer Co-op",
+        "company": "Nokia",
+        "summary": "Built ML inference, deployment, and observability infrastructure for autonomous-networking systems.",
+        "highlights": [
+            "Built Python, Kafka, and Vertex AI infrastructure supporting CNN training and inference on 2K+ TPS of 5G telemetry.",
+            "Automated Kubernetes deployment and validation with Docker, Bash, and CI/CD, reducing manual testing by 70%.",
+            "Integrated Prometheus, Datadog, Grafana, and Fluent Bit for system health, log, and performance monitoring."
+        ],
+        "tech": [
+            "Python",
+            "Kafka",
+            "GCP",
+            "Vertex AI",
             "Kubernetes",
             "Docker"
         ],
@@ -19,16 +42,19 @@
     {
         "positionTitle": "Software Development Engineer Intern",
         "company": "Amazon",
-        "summary": "Built full-stack internal systems for recommendation model testing and production-log analytics at scale.",
+        "summary": "Shipped a full-stack recommendation diagnostics system for faster, self-service investigation of customer escalations.",
         "highlights": [
-            "Built and JUnit tested Java RESTful APIs with Lambda + API Gateway for event-driven systems handling 8k+ TPS.",
-            "Reduced Athena query cost by 90% with parquet format partitioning, frontend caching, and SQL query tuning.",
-            "Cut escalation response time from 30+ minutes to under 5 minutes while providing advanced analytics from telemetry logs."
+            "Built a React, Java, and AWS diagnostics tool adopted by 30+ engineers, reducing debugging time by 50%.",
+            "Developed serverless ETL pipelines and Java REST APIs on Lambda to analyze logs from an 8K TPS recommendation system.",
+            "Reduced Athena query costs by 80% through SQL tuning, caching, partitioning, and Parquet optimization."
         ],
         "tech": [
             "Java",
             "AWS",
-            "React"
+            "React",
+            "Lambda",
+            "Athena",
+            "SQL"
         ],
         "location": "Seattle, WA",
         "dates": "June 2025 - August 2025"

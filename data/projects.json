@@ -1,90 +1,240 @@
 [
     {
-        "title": "Finance Data Pipeline",
-        "summary": "Serverless ETL pipeline for stock market ingestion, transformation, and analytics.",
+        "title": "Distributed Model Server",
+        "category": "ML Infrastructure",
+        "summary": "Local-first distributed inference service that routes and batches ONNX requests across gRPC workers.",
+        "importance": "Model quality is not enough in production; inference systems also need bounded work, health checks, failure recovery, and reproducible performance.",
         "highlights": [
-            "Used Python Lambda jobs to fetch Alpha Vantage market data.",
-            "Transformed data with PySpark and stored partitioned Parquet on S3.",
-            "Scheduled fully automated runs every 12 hours using CloudWatch."
+            "Built a FastAPI gateway and gRPC/Protobuf worker service for ONNX inference.",
+            "Implemented request batching, bounded queues, health checks, retries, and graceful shutdown.",
+            "Recorded a local benchmark of 366.43 successful requests/sec with 45.56 ms p99 latency across 3,663 requests."
         ],
-        "repo": "https://github.com/CrazyMan80052/finance-data-pipeline",
         "tech": [
             "Python",
-            "AWS"
-        ]
+            "FastAPI",
+            "gRPC",
+            "Protobuf",
+            "ONNX",
+            "Docker"
+        ],
+        "repo": "https://github.com/CrazyMan80052/distributed-model-server",
+        "featured": true
     },
     {
-        "title": "ClubHub Discovery Platform - CSD",
-        "summary": "Redesigned Ohio State University's club discovery platform with modern filtering and recommendations.",
+        "title": "Infrared Object Detection Pipeline",
+        "category": "Applied ML",
+        "summary": "Infrared person-detection system designed to support drone-based search-and-rescue workflows.",
+        "importance": "It applies computer vision to a concrete safety problem and shows the full ML loop from annotation conversion through training, evaluation, and inference.",
         "highlights": [
-            "Developed Next.js discovery features and recommendation flows.",
-            "Led 8-person team with Agile delivery and Git-based collaboration.",
-            "Contributed to deployment candidate for a 60,000+ student environment."
+            "Fine-tuned YOLOv8n with PyTorch/CUDA on 5,548 infrared images, reaching 85.9% mAP50 on validation data.",
+            "Built a COCO-to-YOLO conversion pipeline for 6,546 person bounding boxes.",
+            "Implemented GPU training, evaluation, checkpointing, and batch inference, measuring 3.1 ms per image."
         ],
-        "repo": "https://github.com/Collaborative-Software-Development-Club/fall-2025-web-clubhub",
-        "tech": [
-            "Next.js",
-            "React",
-            "TypeScript"
-        ]
-    },
-    {
-        "title": "Boss MechAInic Chatbot Tool",
-        "summary": "Agentic vehicle-diagnosis chatbot platform connecting customers and auto shops.",
-        "highlights": [
-            "Built with Next.js + TypeScript and deployed on Vercel.",
-            "Integrated Redis, Auth.js, and PostgreSQL for state and persistence.",
-            "Enabled shops to review conversations for faster follow-up support."
-        ],
-        "repo": "https://github.com/CrazyMan80052/boss-chatbot-tool/tree/main",
-        "tech": [
-            "Next.js",
-            "TypeScript",
-            "Redis",
-            "PostgreSQL"
-        ]
-    },
-    {
-        "title": "Stock Price Movement Classifier",
-        "summary": "ML pipeline predicting next-day stock movement from large historical datasets.",
-        "highlights": [
-            "Trained XGBoost and Random Forest models on 2M rows.",
-            "Engineered 15+ technical indicators for feature quality.",
-            "Improved precision by 10% with preprocessing and feature tuning."
-        ],
-        "repo": "https://github.com/CrazyMan80052/Quantathon2025",
         "tech": [
             "Python",
             "PyTorch",
+            "CUDA",
+            "YOLOv8",
             "Pandas"
-        ]
+        ],
+        "repo": "https://github.com/CrazyMan80052/HackAIInfraredAnalysis",
+        "featured": true
+    },
+    {
+        "title": "Order Book Simulator",
+        "category": "C++ / Markets",
+        "summary": "Deterministic C++20 replay engine that reconstructs Level 2 order books, validates market-event integrity, and simulates fee-aware IOC execution.",
+        "importance": "Market-data systems must preserve ordering, reject malformed state, and model execution precisely before their outputs can support trustworthy analysis.",
+        "highlights": [
+            "Reconstructed order-book state while detecting stale, duplicate, out-of-order, and malformed market events.",
+            "Implemented fee-aware IOC execution with fixed-point arithmetic and depth modeling.",
+            "Processed 100,000 accepted events at 12,508.74 events/sec in the committed deterministic benchmark."
+        ],
+        "tech": [
+            "C++20",
+            "CMake",
+            "Linux",
+            "Catch2",
+            "JSON"
+        ],
+        "repo": "https://github.com/CrazyMan80052/order-book-simulator",
+        "featured": true
+    },
+    {
+        "title": "Finance Data Pipeline",
+        "category": "Data Engineering",
+        "summary": "Serverless AWS pipeline that ingests stock-market data, transforms it into partitioned Parquet, and exposes it through Glue and Athena.",
+        "importance": "Analytics systems become cheaper and easier to operate when ingestion, schema conversion, partitioning, catalog registration, and scheduling are automated as one reproducible pipeline.",
+        "highlights": [
+            "Built Python Lambda functions for scheduled ingestion and event-driven transformation of Alpha Vantage market data.",
+            "Wrote typed Parquet datasets partitioned by symbol, year, and month and registered them in AWS Glue for Athena queries.",
+            "Defined Lambda, S3, Glue, Athena, IAM, and EventBridge infrastructure with Terraform."
+        ],
+        "tech": [
+            "Python",
+            "Terraform",
+            "Lambda",
+            "S3",
+            "Parquet",
+            "Glue",
+            "Athena"
+        ],
+        "repo": "https://github.com/CrazyMan80052/finance-data-pipeline",
+        "featured": true
+    },
+    {
+        "title": "Parallel DAG Workflow Engine",
+        "category": "Distributed Systems",
+        "summary": "C++20 workflow engine for dependency-aware parallel scheduling, bounded execution, cancellation, and failure propagation.",
+        "highlights": [],
+        "tech": [
+            "C++20",
+            "CMake",
+            "Multithreading",
+            "ThreadSanitizer",
+            "Linux"
+        ],
+        "repo": "https://github.com/CrazyMan80052/dag-workflow-engine",
+        "featured": false
+    },
+    {
+        "title": "High-Performance Event Streaming Engine",
+        "category": "Systems",
+        "summary": "Linux C++20 event-streaming engine using deterministic partitioning, nonblocking UDP, bounded queues, and multithreaded aggregation.",
+        "highlights": [],
+        "tech": [
+            "C++20",
+            "Linux",
+            "UDP",
+            "epoll",
+            "CMake",
+            "Multithreading"
+        ],
+        "repo": "https://github.com/CrazyMan80052/event-streaming-engine",
+        "featured": false
     },
     {
         "title": "Automated Video Creation Tool",
-        "summary": "Automated Reddit-style short-form video generation and publishing pipeline.",
-        "highlights": [
-            "Rendered and uploaded short videos in under 4 minutes end-to-end.",
-            "Automated thumbnails, subtitles, and descriptions with AI workflows.",
-            "Containerized with Docker for reliable cross-platform execution."
+        "category": "Automation",
+        "summary": "Python pipeline that automated short-form video generation, packaging, and publishing.",
+        "importance": "Reduced a 15-minute manual workflow to under 4 minutes; early output reached 1,000+ views in 24 hours.",
+        "highlights": [],
+        "tech": [
+            "Python",
+            "Docker",
+            "GPT",
+            "Whisper",
+            "MoviePy"
         ],
         "repo": "https://github.com/CrazyMan80052/Reddit-Video-Uploader",
-        "tech": [
-            "Python",
-            "Docker"
-        ]
+        "featured": false
     },
     {
-        "title": "Hack AI Infrared Analysis",
-        "summary": "Computer vision search-and-rescue assistant using infrared drone imagery.",
-        "highlights": [
-            "Trained YOLOv8 + PyTorch detection model with 80% accuracy.",
-            "Prepared and cleaned a 7,800-image infrared dataset.",
-            "Designed Q-learning inspired swarm pathfinding for 20% better coverage."
+        "title": "Boss MechAInic",
+        "category": "Agentic Product",
+        "summary": "Vehicle-diagnosis chatbot prototype with persistent conversations and an auto-shop review workflow.",
+        "highlights": [],
+        "tech": [
+            "Next.js",
+            "TypeScript",
+            "Auth.js",
+            "Redis",
+            "PostgreSQL"
         ],
-        "repo": "https://github.com/CrazyMan80052/HackAIInfraredAnalysis",
+        "repo": "https://github.com/CrazyMan80052/boss-chatbot-tool",
+        "featured": false
+    },
+    {
+        "title": "ClubHub Discovery Platform",
+        "category": "Product / Leadership",
+        "summary": "Ohio State club-discovery experience with search, filtering, and recommendation workflows; Sahas led an eight-person feature team.",
+        "highlights": [],
+        "tech": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "PostgreSQL"
+        ],
+        "repo": "https://github.com/Collaborative-Software-Development-Club/fall-2025-web-clubhub",
+        "featured": false
+    },
+    {
+        "title": "Stock Price Movement Classifier",
+        "category": "Machine Learning",
+        "summary": "Model-comparison and feature-engineering pipeline for next-day stock movement classification.",
+        "highlights": [],
         "tech": [
             "Python",
-            "PyTorch"
-        ]
+            "Pandas",
+            "XGBoost",
+            "Random Forest"
+        ],
+        "repo": "https://github.com/CrazyMan80052/Quantathon2025",
+        "featured": false
+    },
+    {
+        "title": "Stock Analysis Engine",
+        "category": "Performance Computing",
+        "summary": "C++ stock analytics experiment exploring AVX2 and CUDA acceleration.",
+        "highlights": [],
+        "tech": [
+            "C++",
+            "AVX2",
+            "CUDA"
+        ],
+        "repo": "https://github.com/CrazyMan80052/stock-analysis-engine",
+        "featured": false
+    },
+    {
+        "title": "Research AI Agent",
+        "category": "AI Tooling",
+        "summary": "Small Python agent for assisting with research-paper exploration.",
+        "highlights": [],
+        "tech": [
+            "Python",
+            "LLM"
+        ],
+        "repo": "https://github.com/CrazyMan80052/research-ai-agent",
+        "featured": false
+    },
+    {
+        "title": "Bounded Buffer",
+        "category": "Systems Fundamentals",
+        "summary": "C implementation of the bounded producer-consumer problem using POSIX synchronization.",
+        "highlights": [],
+        "tech": [
+            "C",
+            "POSIX Threads",
+            "Semaphores"
+        ],
+        "repo": "https://github.com/CrazyMan80052/bounded-buffer",
+        "featured": false
+    },
+    {
+        "title": "CLI Restaurant Inventory System",
+        "category": "Systems Fundamentals",
+        "summary": "C command-line inventory and ordering system with file persistence and manual memory management.",
+        "highlights": [],
+        "tech": [
+            "C",
+            "File I/O",
+            "GDB",
+            "Valgrind"
+        ],
+        "repo": "https://github.com/CrazyMan80052/cli-restaurant-inventory-system",
+        "featured": false
+    },
+    {
+        "title": "MediGuard",
+        "category": "Web Product",
+        "summary": "Early web project focused on reducing medication-related accidents.",
+        "highlights": [],
+        "tech": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "repo": "https://github.com/CrazyMan80052/MediGuard",
+        "featured": false
     }
 ]
