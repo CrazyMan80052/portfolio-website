@@ -131,7 +131,7 @@ export default function Home() {
                     <div className="space-y-5">
                         {workExperience.map((experience) => (
                             <ExperienceCard
-                                key={`${experience.company}-${experience.positionTitle}`}
+                                key={`${experience.company}-${experience.positionTitle}-${experience.dates}`}
                                 experience={experience}
                             />
                         ))}
