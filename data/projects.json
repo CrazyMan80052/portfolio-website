@@ -1,5 +1,27 @@
 [
     {
+        "title": "Parallel DAG Workflow Engine",
+        "category": "Distributed Systems",
+        "summary": "C++20 workflow engine for dependency-aware parallel scheduling, bounded execution, cancellation, and failure propagation.",
+        "importance": "Reliable workflow infrastructure must preserve dependency and shutdown invariants while extracting useful parallelism from complex task graphs.",
+        "highlights": [
+            "Executed dependency graphs with a fixed worker pool, bounded queues, and deterministic failure propagation, validated against a single-threaded reference executor.",
+            "Measured ~1.6x throughput on wide graphs (3.28 ms to 2.06 ms) and ~1.66x on layered graphs at 4 workers, with chains correctly showing no speedup.",
+            "Validated cancellation and race-safe shutdown with ThreadSanitizer and a 67-test suite."
+        ],
+        "tech": [
+            "C++20",
+            "CMake",
+            "Multithreading",
+            "ThreadSanitizer",
+            "Linux"
+        ],
+        "repo": "https://github.com/CrazyMan80052/dag-workflow-engine",
+        "featured": true,
+        "image": "/projects/dag-workflow-engine.webp",
+        "imageAlt": "Bar charts comparing single-threaded reference and multi-worker execution time for a 32-task wide graph and a 4x4 layered graph."
+    },
+    {
         "title": "Distributed Model Server",
         "category": "ML Infrastructure",
         "summary": "Local-first distributed inference service that routes and batches ONNX requests across gRPC workers.",
@@ -18,7 +40,32 @@
             "Docker"
         ],
         "repo": "https://github.com/CrazyMan80052/distributed-model-server",
-        "featured": true
+        "featured": true,
+        "image": "/projects/distributed-model-server.webp",
+        "imageAlt": "Bar chart of p50, p95, and p99 end-to-end latency and a histogram of request durations from a 3,663-request local benchmark."
+    },
+    {
+        "title": "High-Performance Event Streaming Engine",
+        "category": "Systems",
+        "summary": "Linux C++20 event-streaming engine using deterministic partitioning, nonblocking UDP, bounded queues, and multithreaded aggregation.",
+        "importance": "Streaming systems need predictable behavior under load, including backpressure, overload handling, deterministic routing, and clean shutdown.",
+        "highlights": [
+            "Built a deterministic routing and aggregation engine over nonblocking UDP with epoll, bounded per-worker queues, and multithreaded aggregation.",
+            "Processed ~1.1M events/sec at 0% loss with batch framing, and sustained a paced 200K events/sec with sub-millisecond p99 end-to-end latency in the committed local benchmark.",
+            "Validated overload handling, duplicate/reorder rejection, and graceful shutdown with 135 tests passing under ASan/UBSan and ThreadSanitizer."
+        ],
+        "tech": [
+            "C++20",
+            "Linux",
+            "UDP",
+            "epoll",
+            "CMake",
+            "Multithreading"
+        ],
+        "repo": "https://github.com/CrazyMan80052/event-streaming-engine",
+        "featured": true,
+        "image": "/projects/event-streaming-engine.webp",
+        "imageAlt": "Bar chart of median throughput across batch sizes and a paced 200K events-per-second sustained load with sub-millisecond p99 latency."
     },
     {
         "title": "Infrared Object Detection Pipeline",
@@ -38,7 +85,9 @@
             "Pandas"
         ],
         "repo": "https://github.com/CrazyMan80052/HackAIInfraredAnalysis",
-        "featured": true
+        "featured": true,
+        "image": "/projects/hackai-infrared.webp",
+        "imageAlt": "Infrared night-vision image showing detected people outlined with bounding boxes from the YOLOv8 validation set."
     },
     {
         "title": "Order Book Simulator",
@@ -58,7 +107,9 @@
             "JSON"
         ],
         "repo": "https://github.com/CrazyMan80052/order-book-simulator",
-        "featured": true
+        "featured": true,
+        "image": "/projects/order-book-simulator.webp",
+        "imageAlt": "Bar chart showing deterministic replay throughput and event integrity counts (accepted, duplicates, gaps, malformed, book errors) from a 100,000-event replay."
     },
     {
         "title": "Finance Data Pipeline",
@@ -80,38 +131,9 @@
             "Athena"
         ],
         "repo": "https://github.com/CrazyMan80052/finance-data-pipeline",
-        "featured": true
-    },
-    {
-        "title": "Parallel DAG Workflow Engine",
-        "category": "Distributed Systems",
-        "summary": "C++20 workflow engine for dependency-aware parallel scheduling, bounded execution, cancellation, and failure propagation.",
-        "highlights": [],
-        "tech": [
-            "C++20",
-            "CMake",
-            "Multithreading",
-            "ThreadSanitizer",
-            "Linux"
-        ],
-        "repo": "https://github.com/CrazyMan80052/dag-workflow-engine",
-        "featured": false
-    },
-    {
-        "title": "High-Performance Event Streaming Engine",
-        "category": "Systems",
-        "summary": "Linux C++20 event-streaming engine using deterministic partitioning, nonblocking UDP, bounded queues, and multithreaded aggregation.",
-        "highlights": [],
-        "tech": [
-            "C++20",
-            "Linux",
-            "UDP",
-            "epoll",
-            "CMake",
-            "Multithreading"
-        ],
-        "repo": "https://github.com/CrazyMan80052/event-streaming-engine",
-        "featured": false
+        "featured": true,
+        "image": "/projects/finance-data-pipeline.webp",
+        "imageAlt": "Architecture diagram showing EventBridge, ingest Lambda, raw S3, transform Lambda, curated Parquet with Glue catalog, and Athena."
     },
     {
         "title": "Automated Video Creation Tool",

@@ -25,63 +25,84 @@ considered complete per the Definition of Done.
 - PostHog events preserved; deleted `portfolio_intro_dismissed`,
   `about_carousel_navigated`, and the old `project_repo_clicked`.
 
-## Skipped work
+## Completed since the initial pass
 
-### 1. DAG and Event Streaming completion gates (featured promotion)
+### 1. DAG and Event Streaming featured promotion
 
-`Parallel DAG Workflow Engine` and `High-Performance Event Streaming Engine` have
-required completion gates (docs/portfolio-update.md sections 9.1 and 9.3). These
-require cloning each public repo, building, running the documented test suite,
-passing sanitizers (ThreadSanitizer), and reproducing benchmark claims from
-committed scripts.
+Both completion gates were audited against the public repos
+(`dag-workflow-engine` and `event-streaming-engine` on GitHub, which match
+`origin/main` locally):
 
-They are currently listed in the All Projects index with neutral
-implementation-only summaries and **no** metrics. When each gate passes:
+- **Parallel DAG Workflow Engine:** builds clean; **67/67 tests pass** (debug
+  and TSan, the latter via the documented ASLR workaround). ThreadSanitizer
+  passes the concurrency suite. **However**, the spec's section 9.1 headline
+  numbers (2.8x throughput, 10K+ task graphs, 100+ tests) are NOT reproducible
+  from committed evidence — the committed `docs/results/analysis.md` reports a
+  best measured speedup of ~1.6x (wide) / ~1.66x (layered), states no 10K+ task
+  graph was measured, and the suite is 67 tests.
+- **High-Performance Event Streaming Engine:** builds clean; **135/135 tests
+  pass** (dev, and per `docs/progress.md` ASan/UBSan and TSan). The benchmark
+  harness and committed README tables exist, but the `results/` campaigns are
+  gitignored, and the full-scale 1M-event run shows throughput *decreasing*
+  with worker count under unlimited rate (CPU contention), so the spec's 9.3
+  claims (500K ev/s, 2.6x 1->4 worker scaling) are NOT reproducible. The
+  cleanest supported claim is a paced ~200K ev/s at 0% loss with sub-millisecond
+  p99 (89/142/230 µs) plus ~1.1M ev/s at 0% loss with batch framing.
 
-1. Copy the verified highlights from the spec into `data/projects.json`.
-2. Set `"featured": true` and reorder so featured order is:
-   DAG -> Model Server -> Event Streaming -> Infrared -> Order Book -> Finance.
-3. Add the project-specific visual asset (see below).
-4. Record the verification commands and results in a PR/handoff note.
+**Decision (approved by owner):** promote both projects to `featured: true`
+using **honest, evidence-based highlights** instead of the unverifiable spec
+numbers. Both are now featured and ordered per spec section 9: DAG -> Model
+Server -> Event Streaming -> Infrared -> Order Book -> Finance.
 
 ### 2. Project visual assets (`public/projects/`)
 
-None of the six required WebP images exist yet. Each requires pulling real
-evidence from its repo (benchmark output, prediction image, or an architecture
-screenshot) and optimizing it, so they were skipped rather than fabricated:
+All six required WebP assets now exist, generated from real committed/local
+evidence (16:9, 1280x720, all under 300 KB):
 
-- `dag-workflow-engine.webp` — real demo graph / execution trace (gate pending).
-- `distributed-model-server.webp` — chart from `benchmarks/raw/local-trial.ndjson`.
-- `event-streaming-engine.webp` — throughput/latency bitmap from committed output.
-- `hackai-infrared.webp` — `Try2/yolov8Test_model/val_batch0_pred.jpg`.
-- `order-book-simulator.webp` — bitmap from committed replay benchmark.
-- `finance-data-pipeline.webp` — architecture bitmap (EventBridge -> ingest
-  Lambda -> raw S3 -> transform Lambda -> curated Parquet/Glue -> Athena).
+- `dag-workflow-engine.webp` — bar charts of the committed benchmark run
+  (wide/32 and layered 4x4 timing at 1/2/4/8 workers vs reference).
+- `distributed-model-server.webp` — latency percentiles + duration histogram
+  from `benchmarks/raw/local-trial.ndjson` (3,663 requests).
+- `event-streaming-engine.webp` — batch-size throughput + paced 200K/s from the
+  committed README benchmark tables.
+- `hackai-infrared.webp` — `Try2/yolov8Test_model/val_batch0_pred.jpg`
+  (prediction image with bounding boxes), cropped to 16:9.
+- `order-book-simulator.webp` — replay throughput + integrity counts from the
+  committed `100k-benchmark.json`.
+- `finance-data-pipeline.webp` — architecture diagram
+  (EventBridge -> ingest Lambda -> raw S3 -> transform Lambda -> curated
+  Parquet/Glue -> Athena).
 
-The `image`/`imageAlt` fields in `projects.json` and the `<Image>` block in
-`featured-project.tsx` are already wired up; they render nothing until an asset
-exists. Keep images WebP, <=300 KB, 16:9 or 3:2, with factual alt text.
+`image`/`imageAlt` are wired in `data/projects.json` for all six featured
+projects and render via `featured-project.tsx`.
+
+### 4. Link verification (spec section 24)
+
+All 15 repository URLs in `data/projects.json` (including
+`Collaborative-Software-Development-Club/fall-2025-web-clubhub`) return HTTP 200.
+GitHub profile returns 200. LinkedIn returns 999 to automated requests (bot
+blocking) but the profile URL is the canonical one from `Swe2026.md`; verify in
+a real browser. Resume link is local (`/resume.pdf`).
+
+## Remaining work
 
 ### 3. Resume PDF (`public/resume.pdf`)
 
-The current PDF predates this refresh. Per spec section 16, replace it with the
-approved SWE/data/ML resume and verify: opens from `/resume.pdf`, name is
-Sahas Uppalapati, December 2026 graduation, and Amazon 2026 / Nokia 2026 /
-Amazon 2025 are present. Not done because the approved PDF was not provided
-in this repo.
+**Still outstanding.** The current `public/resume.pdf` is the pre-refresh
+redacted placeholder (fake phone/email/address, Nokia listed as "Data Fabric and
+Network Automation Co-Op", no Amazon 2026). Per spec section 16, replace it with
+the approved SWE/data/ML resume and verify: opens from `/resume.pdf`, name is
+Sahas Uppalapati, December 2026 graduation, Amazon 2026 / Nokia 2026 /
+Amazon 2025 present, no verification markers. The owner is supplying the
+approved PDF.
 
 ### 4. Browser verification (Playwright)
 
 The production build passes, but the multi-viewport audit in spec section 23
 (1440, 1024, 768, 390, 320) has not been run. Verify: no horizontal scrolling,
 no clipped/occluded text, nav fits at 320px, all links resolve, resume opens,
-email copy reports success, and the console is clean.
-
-### 5. Link verification (spec section 24)
-
-Every repository URL in `data/projects.json` and the GitHub/LinkedIn/resume
-links should be checked for HTTP success or browser navigation. This also
-confirms no repo should be excluded due to a wrong URL vs. private repo.
+email copy reports success, the six featured project images load and are not
+distorted, and the console is clean.
 
 ## How to verify the current state
 
