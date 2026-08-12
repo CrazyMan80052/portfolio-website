@@ -25,11 +25,11 @@ export function SiteNav() {
             >
                 <a
                     href="#home"
-                    className="shrink-0 text-xs font-semibold tracking-[0.15em] text-cyan-300 transition hover:text-cyan-200 sm:text-sm"
+                    className="shrink-0 text-[10px] font-semibold tracking-[0.15em] text-cyan-300 transition hover:text-cyan-200 sm:text-sm"
                 >
                     SAHAS.DEV
                 </a>
-                <ul className="flex items-center gap-1 sm:gap-2">
+                <ul className="flex items-center gap-0.5 sm:gap-2">
                     {visibleLinks.map((link) => (
                         <li key={link.href}>
                             <motion.a
@@ -37,7 +37,7 @@ export function SiteNav() {
                                 whileTap={{ scale: 0.98 }}
                                 href={link.href}
                                 onClick={() => posthog.capture("nav_link_clicked", { label: link.label, href: link.href })}
-                                className="rounded-md px-1.5 py-1 text-[11px] text-slate-300 transition hover:bg-slate-800/70 hover:text-white sm:px-3 sm:text-sm"
+                                className="rounded-md px-1 py-1 text-[10px] text-slate-300 transition hover:bg-slate-800/70 hover:text-white sm:px-3 sm:text-sm"
                             >
                                 {link.label}
                             </motion.a>
