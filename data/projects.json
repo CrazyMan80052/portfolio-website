@@ -136,6 +136,27 @@
         "imageAlt": "Architecture diagram showing EventBridge, ingest Lambda, raw S3, transform Lambda, curated Parquet with Glue catalog, and Athena."
     },
     {
+        "title": "CivicDigest",
+        "category": "Web Product",
+        "summary": "Municipal transparency platform that turns public legislative records into searchable civic data, with AI-assisted summaries and source receipts.",
+        "importance": "Helps residents understand local policy while keeping primary-source records available for verification.",
+        "highlights": [
+            "Built a Next.js frontend and FastAPI backend with municipal ingestion and Open Civic Data normalization.",
+            "Implemented source-linked bill views, multi-city datasets, and a human moderation queue for civic updates.",
+            "Supports local development with mock civic datasets and in-memory database fallbacks."
+        ],
+        "tech": [
+            "Next.js",
+            "TypeScript",
+            "Python",
+            "FastAPI",
+            "PostgreSQL",
+            "Gemini"
+        ],
+        "repo": "https://github.com/CrazyMan80052/civic-digest",
+        "featured": false
+    },
+    {
         "title": "Automated Video Creation Tool",
         "category": "Automation",
         "summary": "Python pipeline that automated short-form video generation, packaging, and publishing.",
