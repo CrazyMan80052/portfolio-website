@@ -133,14 +133,30 @@ Notes:
 3. Set the required environment variables.
 4. Deploy.
 
-Required environment variables:
+To enable analytics, set this public project token in your hosting environment
+(or a gitignored `.env.local` for local development):
 
 ```dotenv
 NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN=your_posthog_project_token
-NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 ```
 
-If you do not want analytics, you can remove PostHog initialization from instrumentation-client.ts.
+Without the token, analytics stays disabled. Next.js embeds `NEXT_PUBLIC_*`
+variables in the browser bundle, so restart the development server or rebuild
+and redeploy after changing the token. Use the PostHog project token, never a
+personal API key.
+
+This integration uses a US PostHog project. `next.config.ts` proxies `/ingest/*`
+to `us.i.posthog.com` and `/ingest/static/*` to `us-assets.i.posthog.com`.
+`NEXT_PUBLIC_POSTHOG_HOST` is not used. Server network policies must allow both
+upstream domains. An EU project requires corresponding changes to both proxy
+destinations and the `ui_host` in `instrumentation-client.ts`.
+
+To verify live analytics, open the site with browser network tools, click a
+project repository link, and check that `/ingest/` requests succeed. In that
+PostHog project's live events view, confirm `$pageview` and
+`project_index_repo_clicked` (with `project_title: CivicDigest` and its GitHub
+URL). Check navigation, resume, and contact events as well. Request success
+alone does not confirm that events appeared in the intended project.
 
 ### Option B: Manual Build
 
